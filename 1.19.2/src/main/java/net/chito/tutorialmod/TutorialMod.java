@@ -3,6 +3,8 @@ package net.chito.tutorialmod;
 import com.mojang.logging.LogUtils;
 import net.chito.tutorialmod.block.ModBlocks;
 import net.chito.tutorialmod.item.ModItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
