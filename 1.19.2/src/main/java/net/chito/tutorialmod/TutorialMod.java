@@ -1,6 +1,8 @@
 package net.chito.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.chito.tutorialmod.block.ModBlocks;
+import net.chito.tutorialmod.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -16,9 +18,12 @@ import org.slf4j.Logger;
 public class TutorialMod {
     public static final String MOD_ID = "tutorialmod";
     private static final Logger LOGGER = LogUtils.getLogger();
-    
+
     public TutorialMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
