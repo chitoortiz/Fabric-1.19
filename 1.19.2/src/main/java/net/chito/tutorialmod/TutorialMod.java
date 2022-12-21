@@ -3,6 +3,10 @@ package net.chito.tutorialmod;
 import com.mojang.logging.LogUtils;
 import net.chito.tutorialmod.block.ModBlocks;
 import net.chito.tutorialmod.item.ModItems;
+import net.chito.tutorialmod.painting.ModPaintings;
+import net.chito.tutorialmod.villager.ModVillagers;
+import net.chito.tutorialmod.world.feature.ModConfiguredFeatures;
+import net.chito.tutorialmod.world.feature.ModPlacedFeatures;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,13 +31,21 @@ public class TutorialMod {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModVillagers.register(modEventBus);
+        ModPaintings.register(modEventBus);
+
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(() -> {
+            ModVillagers.registerPOIs();
+        });
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
