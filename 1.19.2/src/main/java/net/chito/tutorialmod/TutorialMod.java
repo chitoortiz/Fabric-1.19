@@ -3,6 +3,7 @@ package net.chito.tutorialmod;
 import com.mojang.logging.LogUtils;
 import net.chito.tutorialmod.block.ModBlocks;
 import net.chito.tutorialmod.item.ModItems;
+import net.chito.tutorialmod.networking.ModMessages;
 import net.chito.tutorialmod.painting.ModPaintings;
 import net.chito.tutorialmod.villager.ModVillagers;
 import net.chito.tutorialmod.world.feature.ModConfiguredFeatures;
@@ -46,6 +47,8 @@ public class TutorialMod {
         event.enqueueWork(() -> {
             ModVillagers.registerPOIs();
         });
+
+        ModMessages.register();
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
