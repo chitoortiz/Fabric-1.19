@@ -15,5 +15,8 @@
   "block.tutorialmod.blueberry_crop": "Blueberry Crop",
 
   "itemGroup.tutorialtab": "Zircon Tutorial Tab",
-  "entity.minecraft.villager.tutorialmod.jump_master": "Jump Master"
+  "entity.minecraft.villager.tutorialmod.jump_master": "Jump Master",
+
+  "key.category.tutorialmod.tutorial": "Tutorial Mod",
+  "key.tutorialmod.drink_water": "Drink Water"
 }
