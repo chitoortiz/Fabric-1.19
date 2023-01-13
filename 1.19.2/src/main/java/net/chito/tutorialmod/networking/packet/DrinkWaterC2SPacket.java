@@ -1,5 +1,6 @@
 package net.chito.tutorialmod.networking.packet;
 
+import net.chito.tutorialmod.thirst.PlayerThirstProvider;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -43,13 +44,21 @@ public class DrinkWaterC2SPacket {
                 // play the drinking sound
                 level.playSound(null, player.getOnPos(), SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS,
                         0.5f, level.random.nextFloat() * 0.1f + 0.9f);
-                // increase the water level of player
 
-                // Output the current thirst level
+                player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
+                    // increase the water level of player
+                    thirst.addThirst(1);
+                    // Output the current thirst level
+                    player.sendSystemMessage(Component.literal("Current thirst: " + thirst.getThirst()).withStyle(ChatFormatting.AQUA));
+                });
             } else {
                 // Notify the player that there is no water around
                 player.sendSystemMessage(Component.translatable(MESSAGE_NO_WATER).withStyle(ChatFormatting.RED));
-                // output the current thirst level
+
+                player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
+                    // Output the current thirst level
+                    player.sendSystemMessage(Component.literal("Current thirst: " + thirst.getThirst()).withStyle(ChatFormatting.AQUA));
+                });
             }
         });
         return true;

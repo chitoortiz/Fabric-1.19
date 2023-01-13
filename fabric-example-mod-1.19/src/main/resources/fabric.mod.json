@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "net.chito.tutorialmod.TutorialMod"
+    ],
+    "client": [
+      "net.chito.tutorialmod.TutorialModClient"
     ]
   },
   "mixins": [
